@@ -101,7 +101,14 @@ public class MainViewController {
     }
 
     @FXML
-    void btnBrowseOnAction(ActionEvent event){}
+    void btnBrowseOnAction(ActionEvent event) throws MalformedURLException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.jpeg", "*.jpg", "*.png"));
+        File file = fileChooser.showOpenDialog(btnBrowse.getScene().getWindow());
+        Image image = new Image(file.toURI().toURL().toString());
+        profilePicture.setImage(image);
+        btnClear.setDisable(false);
+    }
 
     @FXML
     void btnClearOnAction(ActionEvent event) {
@@ -114,8 +121,24 @@ public class MainViewController {
     }
 
     @FXML
-    void btnNewStudentOnAction(ActionEvent event) {}
+    void btnNewStudentOnAction(ActionEvent event) {
+        for (Node node : new Node[]{txtId, txtName, btnBrowse, btnSave}) {
+            if (node instanceof TextField) {
+                ((TextField) node).clear();
+            }
+            node.setDisable(false);
+        }
+        System.out.println(studentIdGenerate());
+        txtId.setText(studentIdGenerate());
+        btnClearOnAction(event);
+        txtName.requestFocus();
+    }
 
+    private String studentIdGenerate() {
+        int number = tblStudents.getItems().size() == 0 ? 1 : (Integer.parseInt((tblStudents.getItems().get((tblStudents.getItems().size() - 1)).getId().substring(9))) + 1);
+        String id = String.format("DEP-10/S-%03d", number);
+        return id;
+    }
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {

@@ -117,7 +117,23 @@ public class MainViewController {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
-
+        if(tblStudents.getSelectionModel().getSelectedItem()!=null){
+            Student selectStudent = tblStudents.getSelectionModel().getSelectedItem();
+            tblStudents.getItems().remove(selectStudent);
+            tblStudents.getSelectionModel().clearSelection();
+            btnNewStudent.fire();
+            Connection connection = DBConnection.getInstance().getConnection();
+            try {
+                PreparedStatement stm = connection.prepareStatement("DELETE FROM Picture WHERE student_id=?");
+                stm.setString(1,selectStudent.getId());
+                stm.executeUpdate();
+                PreparedStatement stm2 = connection.prepareStatement("DELETE FROM Student WHERE id=?");
+                stm2.setString(1,selectStudent.getId());
+                stm2.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     @FXML

@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 import lk.ijse.dep10.app.db.DBConnection;
@@ -112,7 +113,10 @@ public class MainViewController {
 
     @FXML
     void btnClearOnAction(ActionEvent event) {
-
+        Image image = new Image("/images/no-profile-picture.jpg");
+        profilePicture.setImage(image);
+        btnClear.setDisable(true);
+        btnBrowse.requestFocus();
     }
 
     @FXML
@@ -228,7 +232,10 @@ public class MainViewController {
 
     @FXML
     void tblStudentOnKeyReleased(KeyEvent event) {
-
+        if (event.getCode() == KeyCode.DELETE) {
+            btnDelete.fire();
+            tblStudents.getSelectionModel().clearSelection();
+        }
     }
 
     @FXML

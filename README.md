@@ -14,7 +14,7 @@ During my training period at IJSE(Institute of Software Engneering) as a Trainin
   To try out the project, please follow these Git commands in your terminal:
   1. Clone the Project 
 ```
-git clone https://github.com/SubhashChamara/public-image-gallery-app.git
+ git clone https://github.com/SubhashChamara/student-management-system.git
 ```
 
 

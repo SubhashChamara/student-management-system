@@ -2,7 +2,7 @@
 
 ## Welcome to My Student Management System Project !
 
-During my training period at IJSE(Institute of Software Engneering) as a Training Fullstack Developer, I developed a user-friendly application to manage student details and attendance. In Version-1, I added features like student information storage(Name,Registration number,Photgraph), and the ability to add, modify, and remove students. I look forward to expanding the application with additional features to further enhance my skills and knowledge. Your suggestions for future improvements are welcome as I strive to learn and grow in this project.
+During my training period at IJSE(Institute of Software Engneering) as a Training Fullstack Developer, I developed a user-friendly application to manage student details . In Version-1, I added features like student information storage(Name,Registration number,Photgraph), and the ability to add, modify, and remove students. I look forward to expanding the application with additional features to further enhance my skills and knowledge. Your suggestions for future improvements are welcome as I strive to learn and grow in this project.
 
 ### 1.Technology Used
 

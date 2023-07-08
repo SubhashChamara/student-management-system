@@ -2,21 +2,29 @@
 
 ## Welcome to My Student Management System Project !
 
-I developed this project within my training period in IJSE(Institute of Software Engineering) as a Training FullStack Developer to explore and practice the front-end and back-end technologies.The application offers users the ability to conveniently Mannge students in a institute.
-
+During my training period at IJSE(Institute of Software Engneering) as a Training Fullstack Developer, I developed a user-friendly application to manage student details and attendance. In Version-1, I added features like student information storage(Name,Registration number,Photgraph), and the ability to add, modify, and remove students. I look forward to expanding the application with additional features to further enhance my skills and knowledge. Your suggestions for future improvements are welcome as I strive to learn and grow in this project.
 
 ### 1.Technology Used
 
-
+ - JavaFX
+ - MySQL
 
 ### 2.How to try this project
   
   To try out the project, please follow these Git commands in your terminal:
   1. Clone the Project 
-    git clone https://github.com/SubhashChamara/public-image-gallery-app.git
-  2. Get the dependencies
+```
+git clone https://github.com/SubhashChamara/public-image-gallery-app.git
+```
+
+
+  3. Get the dependencies
   
   Then execute the application  
+
+  Project Demo
+  
+  https://github.com/SubhashChamara/student-management-system/assets/112160411/ebd76ba2-2f72-45da-bc40-2ddd799cf3e2
   
 ### Contact
  

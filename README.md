@@ -39,4 +39,6 @@ During my training period at IJSE(Institute of Software Engneering) as a Trainin
 
 
 ### License
+This application is licensed under this [license](License.txt)
+
 Copyright &copy; 2023 | Subhash Chamara Udayanga | All Rights Reserved.

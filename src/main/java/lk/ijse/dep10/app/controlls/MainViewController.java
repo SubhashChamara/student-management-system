@@ -72,6 +72,53 @@ public class MainViewController {
         } );
 
         btnDelete.setDisable(true);
+        txtSearch.textProperty().addListener((ov, s, current) ->{
+            Connection connection = DBConnection.getInstance().getConnection();
+            try {
+                Statement stm = connection.createStatement();
+                String str ="SELECT * FROM Student WHERE name LIKE '%s' OR id LIKE '%s'";
+                String sql = String.format(str, "%" + current + "%","%" + current + "%");
+                ResultSet rst = stm.executeQuery(sql);
+                PreparedStatement stmPicture = connection.prepareStatement("SELECT * FROM Picture WHERE student_id=?");
+
+
+                tblStudents.getItems().clear();
+                while (rst.next()){
+                    String id = rst.getString("id");
+                    String name = rst.getString("name");
+                    stmPicture.setString(1,id);
+                    ResultSet rstPic = stmPicture.executeQuery();
+                    Student student = new Student(id, name, null);
+                    Image image = new Image("/images/no-profile-picture.jpg", 100.00, 100.00, true, true);
+                    ImageView imgView = new ImageView(image);
+                    student.setImageView(imgView);
+                    if (rstPic.next()) {
+                        Blob blob = rstPic.getBlob(2);
+                        Image profilePic = new Image(blob.getBinaryStream(),100,100,true,true);
+                        ImageView imageView = new ImageView(profilePic);
+                        student.setImageView(imageView);
+                    }
+                    tblStudents.getItems().add(student);
+
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        } );
+
+
+        tblStudents.getSelectionModel().selectedItemProperty().addListener((ov, item, current) -> {
+            for (Node node : new Node[]{btnDelete, btnBrowse, btnSave,txtName}) {
+                node.setDisable(current==null);
+            }
+
+            if(current==null) return;
+            txtId.setText(current.getId());
+            txtName.setText(current.getName());
+            profilePicture.setImage(current.getImageView().getImage());
+            btnClear.setDisable(false);
+
+        });
 
     }
     private void loadDatabaseData() {
@@ -238,9 +285,6 @@ public class MainViewController {
         }
     }
 
-    @FXML
-    void txtSearchOnAction(ActionEvent event) {
 
-    }
 
 }
